@@ -1,20 +1,43 @@
 PODS:
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
+  - GoogleMaps (3.0.1):
+    - GoogleMaps/Maps (= 3.0.1)
+  - GoogleMaps/Base (3.0.1)
+  - GoogleMaps/Maps (3.0.1):
+    - GoogleMaps/Base
+  - GooglePlaces (3.0.1):
+    - GoogleMaps/Base (= 3.0.1)
   - QRCode (2.0)
   - QRCodeReader.swift (10.0.0)
+  - SwiftCharts (0.6.3)
 
 DEPENDENCIES:
+  - Charts
+  - GoogleMaps
+  - GooglePlaces
   - QRCode
   - QRCodeReader.swift (~> 10.0.0)
+  - SwiftCharts (~> 0.6.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Charts
+    - GoogleMaps
+    - GooglePlaces
     - QRCode
     - QRCodeReader.swift
+    - SwiftCharts
 
 SPEC CHECKSUMS:
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
+  GoogleMaps: ec8c032304e19f609aba11096eed7207ca1af32d
+  GooglePlaces: 44d1be1cf4c2919563162fe369c117168e551e6d
   QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
   QRCodeReader.swift: 74d0378eb0c7807828552b49626bbc8307495aee
+  SwiftCharts: 1535b5e228702af2c9c4d60c2a408f2f0f579fa8
 
-PODFILE CHECKSUM: c1406ba2c1d7d41ad3cec68440503d0e7d6438a8
+PODFILE CHECKSUM: 9be1aa622ee4100f4655d1a06702970a12e3fbef
 
 COCOAPODS: 1.5.3
