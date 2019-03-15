@@ -8,16 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		537222614C0AD67E19CAAEAC /* Pods_QRCodeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DDA81D0DA57205DCAA62AC /* Pods_QRCodeDemo.framework */; };
+		C02CFB8D22392B1F00AC7B2A /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02CFB8C22392B1F00AC7B2A /* NotificationsViewController.swift */; };
+		C07EE57B2236356E00E1B7C9 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EE57A2236356E00E1B7C9 /* SensorViewController.swift */; };
 		C0B645FC2203FF820067954A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B645FB2203FF820067954A /* AppDelegate.swift */; };
 		C0B645FE2203FF820067954A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B645FD2203FF820067954A /* ViewController.swift */; };
 		C0B646012203FF820067954A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B645FF2203FF820067954A /* Main.storyboard */; };
 		C0B646032203FF850067954A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0B646022203FF850067954A /* Assets.xcassets */; };
 		C0B646062203FF850067954A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B646042203FF850067954A /* LaunchScreen.storyboard */; };
+		C0BFE562223A2A5000D3A558 /* MapDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BFE561223A2A5000D3A558 /* MapDetailsViewControllerTests.swift */; };
+		C0C4F29D220C569800AAA7D7 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C4F29C220C569800AAA7D7 /* ChartsViewController.swift */; };
 		C0CCA784220A9A2500571F4E /* DeviceDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CCA783220A9A2500571F4E /* DeviceDataViewController.swift */; };
+		C0D75394223249E200BEE6E1 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D75393223249E200BEE6E1 /* MapsViewController.swift */; };
+		C0D7539622326AFA00BEE6E1 /* MapDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D7539522326AFA00BEE6E1 /* MapDetailsViewController.swift */; };
 		C0F58B3C22041A8500727546 /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F58B3B22041A8500727546 /* QRScannerController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C0BFE55A223A29A700D3A558 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0B645F02203FF820067954A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0B645F72203FF820067954A;
+			remoteInfo = QRCodeDemo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C02CFB8C22392B1F00AC7B2A /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		C07EE57A2236356E00E1B7C9 /* SensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
 		C0B645F82203FF820067954A /* QRCodeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B645FB2203FF820067954A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0B645FD2203FF820067954A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +43,13 @@
 		C0B646022203FF850067954A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0B646052203FF850067954A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0B646072203FF850067954A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0BFE555223A29A700D3A558 /* QRCodeDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRCodeDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0BFE559223A29A700D3A558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0BFE561223A2A5000D3A558 /* MapDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailsViewControllerTests.swift; sourceTree = "<group>"; };
+		C0C4F29C220C569800AAA7D7 /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		C0CCA783220A9A2500571F4E /* DeviceDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataViewController.swift; sourceTree = "<group>"; };
+		C0D75393223249E200BEE6E1 /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapsViewController.swift; path = Pods/MapsViewController.swift; sourceTree = SOURCE_ROOT; };
+		C0D7539522326AFA00BEE6E1 /* MapDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailsViewController.swift; sourceTree = "<group>"; };
 		C0F58B3B22041A8500727546 /* QRScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
 		C23D4F56A2A1413A1D5C8CBE /* Pods-QRCodeDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeDemo/Pods-QRCodeDemo.release.xcconfig"; sourceTree = "<group>"; };
 		E4C1E86C1A9B778B5EDAD85C /* Pods-QRCodeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeDemo/Pods-QRCodeDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -38,6 +62,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				537222614C0AD67E19CAAEAC /* Pods_QRCodeDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0BFE552223A29A700D3A558 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				C0B645FA2203FF820067954A /* QRCodeDemo */,
+				C0BFE556223A29A700D3A558 /* QRCodeDemoUITests */,
 				C0B645F92203FF820067954A /* Products */,
 				21B40AC43C4B7289E81E5748 /* Pods */,
 				0B664106B136654ECAA7C92F /* Frameworks */,
@@ -75,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				C0B645F82203FF820067954A /* QRCodeDemo.app */,
+				C0BFE555223A29A700D3A558 /* QRCodeDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,14 +117,44 @@
 			children = (
 				C0B645FB2203FF820067954A /* AppDelegate.swift */,
 				C0B645FD2203FF820067954A /* ViewController.swift */,
+				C07EE57A2236356E00E1B7C9 /* SensorViewController.swift */,
 				C0B645FF2203FF820067954A /* Main.storyboard */,
+				C02CFB8C22392B1F00AC7B2A /* NotificationsViewController.swift */,
+				C0D7539522326AFA00BEE6E1 /* MapDetailsViewController.swift */,
+				C0C4F29C220C569800AAA7D7 /* ChartsViewController.swift */,
 				C0CCA783220A9A2500571F4E /* DeviceDataViewController.swift */,
 				C0F58B3B22041A8500727546 /* QRScannerController.swift */,
+				C0D75393223249E200BEE6E1 /* MapsViewController.swift */,
 				C0B646022203FF850067954A /* Assets.xcassets */,
 				C0B646042203FF850067954A /* LaunchScreen.storyboard */,
 				C0B646072203FF850067954A /* Info.plist */,
 			);
 			path = QRCodeDemo;
+			sourceTree = "<group>";
+		};
+		C0BFE556223A29A700D3A558 /* QRCodeDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C0BFE55F223A29F300D3A558 /* Cases */,
+				C0BFE560223A29FA00D3A558 /* Data */,
+				C0BFE559223A29A700D3A558 /* Info.plist */,
+			);
+			path = QRCodeDemoUITests;
+			sourceTree = "<group>";
+		};
+		C0BFE55F223A29F300D3A558 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				C0BFE561223A2A5000D3A558 /* MapDetailsViewControllerTests.swift */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		C0BFE560223A29FA00D3A558 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,6 +169,7 @@
 				C0B645F52203FF820067954A /* Frameworks */,
 				C0B645F62203FF820067954A /* Resources */,
 				A63093E21A32DAFE48F52730 /* [CP] Embed Pods Frameworks */,
+				6749375A3EB3B21756BBBB7D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -115,6 +179,24 @@
 			productName = QRCodeDemo;
 			productReference = C0B645F82203FF820067954A /* QRCodeDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C0BFE554223A29A700D3A558 /* QRCodeDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0BFE55E223A29A700D3A558 /* Build configuration list for PBXNativeTarget "QRCodeDemoUITests" */;
+			buildPhases = (
+				C0BFE551223A29A700D3A558 /* Sources */,
+				C0BFE552223A29A700D3A558 /* Frameworks */,
+				C0BFE553223A29A700D3A558 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0BFE55B223A29A700D3A558 /* PBXTargetDependency */,
+			);
+			name = QRCodeDemoUITests;
+			productName = QRCodeDemoUITests;
+			productReference = C0BFE555223A29A700D3A558 /* QRCodeDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -128,6 +210,15 @@
 				TargetAttributes = {
 					C0B645F72203FF820067954A = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					C0BFE554223A29A700D3A558 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = C0B645F72203FF820067954A;
 					};
 				};
 			};
@@ -145,6 +236,7 @@
 			projectRoot = "";
 			targets = (
 				C0B645F72203FF820067954A /* QRCodeDemo */,
+				C0BFE554223A29A700D3A558 /* QRCodeDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -160,9 +252,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0BFE553223A29A700D3A558 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6749375A3EB3B21756BBBB7D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-QRCodeDemo/Pods-QRCodeDemo-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QRCodeDemo/Pods-QRCodeDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A63093E21A32DAFE48F52730 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -170,13 +289,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-QRCodeDemo/Pods-QRCodeDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/QRCode/QRCode.framework",
 				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftCharts/SwiftCharts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCharts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -208,14 +331,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C02CFB8D22392B1F00AC7B2A /* NotificationsViewController.swift in Sources */,
 				C0B645FE2203FF820067954A /* ViewController.swift in Sources */,
+				C0C4F29D220C569800AAA7D7 /* ChartsViewController.swift in Sources */,
 				C0B645FC2203FF820067954A /* AppDelegate.swift in Sources */,
+				C0D75394223249E200BEE6E1 /* MapsViewController.swift in Sources */,
+				C0D7539622326AFA00BEE6E1 /* MapDetailsViewController.swift in Sources */,
 				C0CCA784220A9A2500571F4E /* DeviceDataViewController.swift in Sources */,
+				C07EE57B2236356E00E1B7C9 /* SensorViewController.swift in Sources */,
 				C0F58B3C22041A8500727546 /* QRScannerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0BFE551223A29A700D3A558 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0BFE562223A2A5000D3A558 /* MapDetailsViewControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0BFE55B223A29A700D3A558 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0B645F72203FF820067954A /* QRCodeDemo */;
+			targetProxy = C0BFE55A223A29A700D3A558 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C0B645FF2203FF820067954A /* Main.storyboard */ = {
@@ -391,6 +535,44 @@
 			};
 			name = Release;
 		};
+		C0BFE55C223A29A700D3A558 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GW9NR7R2AD;
+				INFOPLIST_FILE = QRCodeDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hts.QRCodeDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QRCodeDemo;
+			};
+			name = Debug;
+		};
+		C0BFE55D223A29A700D3A558 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GW9NR7R2AD;
+				INFOPLIST_FILE = QRCodeDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = hts.QRCodeDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = QRCodeDemo;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -408,6 +590,15 @@
 			buildConfigurations = (
 				C0B6460B2203FF850067954A /* Debug */,
 				C0B6460C2203FF850067954A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0BFE55E223A29A700D3A558 /* Build configuration list for PBXNativeTarget "QRCodeDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0BFE55C223A29A700D3A558 /* Debug */,
+				C0BFE55D223A29A700D3A558 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

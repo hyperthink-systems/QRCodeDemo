@@ -1,65 +1,98 @@
 //
-//  ViewController.swift
+//  MapDetailsViewController.swift
 //  QRCodeDemo
 //
-//  Created by HyperThink Systems on 01/02/19.
+//  Created by HyperThink Systems on 08/03/19.
 //  Copyright © 2019 HyperThink Systems. All rights reserved.
 //
 
 import UIKit
-import QRCode
-import AVFoundation
-import QRCodeReader
-import CoreLocation
+import GoogleMaps
 
-     
+class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
-class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, CLLocationManagerDelegate{
-
-
-    @IBOutlet weak var viewPreview: UIView!
-    @IBOutlet weak var lblString: UILabel!
-    @IBOutlet weak var btnStartStop: UIButton!
+    @IBOutlet weak var barButton: UIBarButtonItem!
+    @IBOutlet weak var mapDetails: UIView!
+    @IBOutlet weak var lat: UILabel!
+    @IBOutlet weak var lon: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var city: UILabel!
+    @IBOutlet weak var sensorButton: UIButton!
     
-    var placemark : CLPlacemark?
-    var locationManager:CLLocationManager!
+    var mapView: GMSMapView?
+    var locationManager = CLLocationManager()
 
-    var data = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        sensorButton.layer.cornerRadius = 10
+        
+ 
+
+        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: mapDetails.frame.size.width, height: mapDetails.frame.size.height), camera: GMSCameraPosition.camera(withLatitude: 12.914953, longitude: 77.632730, zoom: 8))
+        
+        
+        mapView?.delegate = self
+        mapView?.isMyLocationEnabled = true
+        
+        mapView?.settings.compassButton = true
+        mapView?.settings.myLocationButton = true
+        mapView?.isBuildingsEnabled = true
+        mapView?.isTrafficEnabled = true
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         
+        locationManager.allowsBackgroundLocationUpdates = true
         
-        locationManager!.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
         
-        locationManager!.pausesLocationUpdatesAutomatically = false
         
-
         
         if CLLocationManager.locationServicesEnabled(){
             locationManager.startUpdatingLocation()
         }
-
-       // UINavigationBar.appearance().barTintColor   = UIColor(108,55,255,1)
-        UINavigationBar.appearance().barTintColor   = UIColor(41, 150, 204,1)
-        UINavigationBar.appearance().isTranslucent = false
-        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-
+        
+        
+        self.mapDetails.addSubview(mapView!)
+        
+        
+        
+    }
+    @IBAction func barButtonClicked(_ sender: Any) {
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let popupVC = storyboard.instantiateViewController(withIdentifier: "notification") as! NotificationsViewController
+        popupVC.modalPresentationStyle = .popover
+        popupVC.modalTransitionStyle = .crossDissolve
+        present(popupVC, animated: true, completion: nil)
+        
+        
     }
     
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
+    @IBAction func gotoNext(_ sender: Any) {
+        
+       // let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        //let vc = storyBoard.instantiateViewController(withIdentifier: "next") as? SensorViewController
+        //self.present(vc!, animated: true, completion: nil)
+        
+        
+    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation :CLLocation = locations[0] as CLLocation
         
-       // let userLocation = locations[0] as CLLocation
+        // let userLocation = locations[0] as CLLocation
         
-      //  print(userLocation.coordinate.latitude)
-      //  print(userLocation.coordinate.longitude)
+        self.lat.text = String(userLocation.coordinate.latitude)
+        self.lon.text = String(userLocation.coordinate.longitude)
+        //  print(userLocation.coordinate.latitude)
+        //  print(userLocation.coordinate.longitude)
         
         
         // Convert location into object with human readable address components
@@ -72,7 +105,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                 
             } else {
                 
-
+                
                 if let placemark = placemarks?[0] {
                     
                     var streetAddress = ""
@@ -80,6 +113,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                     if placemark.subThoroughfare != nil && placemark.thoroughfare != nil {
                         
                         streetAddress = placemark.subThoroughfare! + " " + placemark.thoroughfare!
+                        
+                       // self.address.text = streetAddress
                         
                     } else {
                         
@@ -94,6 +129,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                     if placemark.locality != nil  {
                         
                         city = placemark.locality!
+                        
+                     //   self.city.text = city
                         
                     } else {
                         
@@ -134,6 +171,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                         
                         country = placemark.country!
                         
+                        self.city.text = country
+                        
                     } else {
                         
                         print("Unable to find zip")
@@ -141,52 +180,20 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                     }
                     
                     
-                  //  print("\(streetAddress)\n\(city), \(state) \(zip)")
-                    
                     DispatchQueue.main.async {
+                        
+         self.address.text =  String("\(streetAddress)\n\(city), \(state) \(zip)")
+                        
                     }
-                   
+                    
                 }
                 
             }
         }
     }
-
+    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
-    
-    @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
-        
-     
 }
-    @IBAction func ButtonTapped(_ sender: Any) {
-        
-        if UserDefaults.standard != nil {
-            print("Items Prints")
-            
-            UserDefaults.standard.string(forKey: "Key")
-            
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Maps") as? MapDetailsViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
-            
-        } else {
-            
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Scan") as? QRScannerController
-            self.navigationController?.pushViewController(vc!, animated: true)
-            
-        }
-        
-    }
-    
-    
-    
-    
-}
-extension UIColor {
-    convenience init(_ r: Double,_ g: Double,_ b: Double,_ a: Double) {
-        self.init(red: CGFloat(r/255), green: CGFloat(g/255), blue: CGFloat(b/255), alpha: CGFloat(a))
-    }
-}
-

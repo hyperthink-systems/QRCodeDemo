@@ -9,5 +9,10 @@ target 'QRCodeDemo' do
 
    pod "QRCode"
    pod 'QRCodeReader.swift', '~> 10.0.0'
+   pod 'Charts'
+
+   pod 'GoogleMaps'
+   pod 'GooglePlaces'
+pod 'SwiftCharts', '~> 0.6.3'
 
 end

@@ -12,6 +12,10 @@ import AVFoundation
 import AudioToolbox
 
 
+let defaults = UserDefaults.standard
+var link: String = ""
+
+
 struct Lol: Codable {
     let device, siteName, deviceName, solution: String
     let deviceID, deviceType: String
@@ -107,7 +111,6 @@ class QRScannerController: UIViewController {
             view.addSubview(qrCodeFrameView)
             view.bringSubviewToFront(qrCodeFrameView)
             
-            view.bringSubviewToFront(desc)
 
         }
     }
@@ -121,28 +124,21 @@ class QRScannerController: UIViewController {
     // MARK: - Helper methods
     
     func launchApp(decodedURL: String) {
-        
         if presentedViewController != nil {
             return
         }
-       
+        
         AudioServicesPlaySystemSound(1009)
 
-        let alertPrompt = UIAlertController(title: "Open App", message: "You're going to open \(decodedURL)", preferredStyle: .actionSheet)
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default, handler: { (action) -> Void in
+        let alertPrompt = UIAlertController(title: "Congratulations", message: "Successfully Scanned!!! ", preferredStyle: .actionSheet)
+        let confirmAction = UIAlertAction(title: "Lets Go", style: UIAlertAction.Style.default, handler: { (action) -> Void in
             
-            
-            
-            if let url = URL(string: decodedURL) {
-                
-                print(decodedURL)
-                
-                self.postMthod()
-                
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "Maps") as! MapDetailsViewController
+            //vc.newsObj = newsObj
+            self.navigationController?.pushViewController(vc,
+                                                     animated: true)
+
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
@@ -151,13 +147,17 @@ class QRScannerController: UIViewController {
         alertPrompt.addAction(cancelAction)
         
         present(alertPrompt, animated: true, completion: nil)
-    }
-    
-    
+        print("added")
+        
+     }
 }
+    
+    
+
 
 extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
     
+ 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
@@ -175,19 +175,20 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
             
             if metadataObj.stringValue != nil {
                 launchApp(decodedURL: metadataObj.stringValue!)
-                
                 print(metadataObj.stringValue!)
                 
-                desc.text = metadataObj.stringValue
+                link = metadataObj.stringValue!
+                
+                
+                
+                UserDefaults.standard.set(URL.self, forKey: "Link")
+                UserDefaults.standard.set(link, forKey: "login") //setObject
 
-            }
+                print(UserDefaults.standard.dictionaryRepresentation())
                 
-                
             }
-            
-           
         }
-
+    }
     
   
     
@@ -202,7 +203,7 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         
         
         
-        let Sensordata: [String: Any] = [ "device": "12442",
+      /*  let Sensordata: [String: Any] = [ "device": "12442",
                                           "deviceId": "HTtest124",
                                           "deviceName": "21124",
                                           "deviceType": "234234",
@@ -213,21 +214,21 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                                           "siteName": "HTS001",
                                           "solution": "EMS",
                                           "acc" : [
-                                            "x" : "\(String(describing: accX!))",
-                                            "y" : "\(String(describing: accY!))",
-                                            "z" : "\(String(describing: accZ!))",
+                                          //  "x" : "\(String(describing: accX!))",
+                                          //  "y" : "\(String(describing: accY!))",
+                                          //  "z" : "\(String(describing: accZ!))",
                                             "unit" : "mG"
-            ],
-                                          "gyro" : [
-                                            "x" : "\(String(describing: gyroX!))",
-                                            "y" : "\(String(describing: gyroY!))",
-                                            "z" : "\(String(describing: gyroZ!))",
+         //   ],
+                                        //  "gyro" : [
+                                            "x" : "\//(String(describing: gyroX!))",
+                                        //    "y" : "\(String(describing: gyroY!))",
+                                        //    "z" : "\(String(describing: gyroZ!))",
                                             "unit" : "mdeg/s"
-            ],
-                                          "mag" : [
-                                            "x" : "\(String(describing: magX!))",
-                                            "y" : "\(String(describing: magY!))",
-                                            "z" : "\(String(describing: magZ!))",
+         //   ],
+                                         // "mag" : [
+                                            "x" : "\//(String(describing: magX!))",//
+                                         //   "y" : "\(String(describing: magY!))",
+                                          //  "z" : "\(String(describing: magZ!))",
                                             "unit" : "uT"
             ]]
         
@@ -279,6 +280,7 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         })
         task.resume()
     }
-    
+    */
    
+}
 }

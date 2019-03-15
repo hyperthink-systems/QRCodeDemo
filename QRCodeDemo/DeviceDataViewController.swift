@@ -12,22 +12,17 @@ import LocalAuthentication
 
 
 
+//var gyroX: Double?
+//var gyroY: Double?
+//var gyroZ:Double?
 
+//var accX: Double?
+//var accY:Double?
+//var accZ: Double?
 
-
-
-
-var gyroX: Double?
-var gyroY: Double?
-var gyroZ:Double?
-
-var accX: Double?
-var accY:Double?
-var accZ: Double?
-
-var magX:Double?
-var magY:Double?
-var magZ:Double?
+//var magX:Double?
+//var magY:Double?
+//var magZ:Double?
 
 
 
@@ -60,7 +55,7 @@ class DeviceDataViewController: UIViewController {
         statusLabel.text = "Accelero Data"
         
         motion.startAccelerometerUpdates()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(DeviceDataViewController.update), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(DeviceDataViewController.update), userInfo: nil, repeats: true)
         
     }
     
@@ -128,9 +123,9 @@ class DeviceDataViewController: UIViewController {
             
             
             
-            accX = accelerometerData.acceleration.x
-            accY = accelerometerData.acceleration.y
-            accZ = accelerometerData.acceleration.z
+           // accX = accelerometerData.acceleration.x
+          //  accY = accelerometerData.acceleration.y
+          //  accZ = accelerometerData.acceleration.z
 
 
         }
@@ -144,9 +139,9 @@ class DeviceDataViewController: UIViewController {
             
      
 
-            gyroX = gyroMeterData.rotationRate.x
-            gyroY = gyroMeterData.rotationRate.y
-            gyroZ = gyroMeterData.rotationRate.z
+          //  gyroX = gyroMeterData.rotationRate.x
+          //  gyroY = gyroMeterData.rotationRate.y
+           // gyroZ = gyroMeterData.rotationRate.z
 
         }
         
@@ -156,9 +151,9 @@ class DeviceDataViewController: UIViewController {
             yLabel.text = " Y: \(magnetoMeter.magneticField.y)"
             zLabel.text = "Z: \(magnetoMeter.magneticField.z)"
         
-            magX = magnetoMeter.magneticField.x
-            magY = magnetoMeter.magneticField.y
-            magZ = magnetoMeter.magneticField.z
+          //  magX = magnetoMeter.magneticField.x
+           // magY = magnetoMeter.magneticField.y
+            //magZ = magnetoMeter.magneticField.z
 
         }
         
