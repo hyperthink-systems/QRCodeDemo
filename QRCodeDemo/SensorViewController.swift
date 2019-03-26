@@ -72,8 +72,8 @@ class SensorViewController: UIViewController,ChartViewDelegate{
         myChartView.rightAxis.drawAxisLineEnabled = true
         myChartView.rightAxis.drawGridLinesEnabled = false
         myChartView.xAxis.granularityEnabled = true
-        myChartView.leftAxis.axisMaximum = 5
-        myChartView.leftAxis.axisMinimum = 5
+        myChartView.leftAxis.axisMaximum = 2
+        //myChartView.leftAxis.axisMinimum = 5
         myChartView.drawBordersEnabled = true
         myChartView.borderColor = UIColor.darkGray
         myChartView.legend.textColor = UIColor.white
