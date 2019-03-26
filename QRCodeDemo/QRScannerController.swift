@@ -13,7 +13,8 @@ import AudioToolbox
 
 
 let defaults = UserDefaults.standard
-var link: String = ""
+var link: String? = ""
+var saveData: String? = ""
 
 
 struct Lol: Codable {
@@ -179,12 +180,16 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                 
                 link = metadataObj.stringValue!
                 
-                
-                
-                UserDefaults.standard.set(URL.self, forKey: "Link")
-                UserDefaults.standard.set(link, forKey: "login") //setObject
-
-                print(UserDefaults.standard.dictionaryRepresentation())
+                if metadataObj.stringValue != nil {
+                    launchApp(decodedURL: metadataObj.stringValue!)
+                    saveData = metadataObj.stringValue
+                    print(saveData!)
+                    
+                    UserDefaults.standard.set(URL.self, forKey: "Link")
+                    UserDefaults.standard.set(saveData!, forKey: "login")
+                    
+                    //saveData.synchronize()
+                }
                 
             }
         }

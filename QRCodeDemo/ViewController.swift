@@ -12,7 +12,6 @@ import AVFoundation
 import QRCodeReader
 import CoreLocation
 
-     
 
 class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, CLLocationManagerDelegate{
 
@@ -56,12 +55,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation :CLLocation = locations[0] as CLLocation
         
-       // let userLocation = locations[0] as CLLocation
-        
-      //  print(userLocation.coordinate.latitude)
-      //  print(userLocation.coordinate.longitude)
-        
-        
         // Convert location into object with human readable address components
         CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
             
@@ -83,7 +76,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                         
                     } else {
                         
-                        print("Unable to find street address")
+                      //  print("Unable to find street address")
                         
                     }
                     
@@ -97,7 +90,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                         
                     } else {
                         
-                        print("Unable to find city")
+                      //  print("Unable to find city")
                         
                     }
                     
@@ -111,7 +104,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                         
                     } else {
                         
-                        print("Unable to find state")
+                      //  print("Unable to find state")
                         
                     }
                     
@@ -124,11 +117,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                         
                     } else {
                         
-                        print("Unable to find zip")
+                       // print("Unable to find zip")
                         
                     }
                     
-                    var country = ""
+                    var country:String = ""
                     
                     if placemark.country != nil {
                         
@@ -136,7 +129,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                         
                     } else {
                         
-                        print("Unable to find zip")
+                      //  print("Unable to find zip")
                         
                     }
                     
@@ -163,7 +156,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
 }
     @IBAction func ButtonTapped(_ sender: Any) {
         
-        if UserDefaults.standard != nil {
+        if link == saveData {
             print("Items Prints")
             
             UserDefaults.standard.string(forKey: "Key")
@@ -179,9 +172,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
         }
         
     }
-    
-    
-    
     
 }
 extension UIColor {

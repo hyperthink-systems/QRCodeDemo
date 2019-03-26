@@ -8,8 +8,11 @@
 
 import UIKit
 import GoogleMaps
+import CocoaMQTT
 
-class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+
+
+class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate{
 
     @IBOutlet weak var barButton: UIBarButtonItem!
     @IBOutlet weak var mapDetails: UIView!
@@ -21,16 +24,22 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
     
     var mapView: GMSMapView?
     var locationManager = CLLocationManager()
-
+    var mqtt: CocoaMQTT!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sensorButton.layer.cornerRadius = 10
-        
- 
+        //mqtt.allowUntrustCACertificate = true
 
-        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: mapDetails.frame.size.width, height: mapDetails.frame.size.height), camera: GMSCameraPosition.camera(withLatitude: 12.914953, longitude: 77.632730, zoom: 8))
+       // setUpMQTT()
+    
+        
+        sensorButton.layer.cornerRadius = 10
+
+
+        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: mapDetails.frame.size.width, height: mapDetails.frame.size.height), camera: GMSCameraPosition.camera(withLatitude: 12.914953, longitude: 77.632730, zoom: 18))
         
         
         mapView?.delegate = self
@@ -61,7 +70,38 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
         
         
         
+        
     }
+    
+   
+    //Mark: MQTT Service
+    
+  /*  func setUpMQTT() {
+        
+        
+        let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
+        mqtt = CocoaMQTT(clientID: clientID, host: "iot.hyperthings.in", port: 6024)
+        mqtt.username = "htsuser"
+        mqtt.password = "hts@123"
+        mqtt.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
+        mqtt.backgroundOnSocket = true
+       // mqtt.publish("/led", withString: "Hello world")
+        mqtt.keepAlive = 60
+        mqtt.delegate = self
+        mqtt.allowUntrustCACertificate = true
+        //mqtt.enableSSL = true
+        
+        let connected = mqtt.connect()
+        print("Connected \(connected)")
+        
+    }  */
+    
+    
+    
+    
+    
+    
+    
     @IBAction func barButtonClicked(_ sender: Any) {
         let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let popupVC = storyboard.instantiateViewController(withIdentifier: "notification") as! NotificationsViewController
@@ -91,8 +131,6 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
         
         self.lat.text = String(userLocation.coordinate.latitude)
         self.lon.text = String(userLocation.coordinate.longitude)
-        //  print(userLocation.coordinate.latitude)
-        //  print(userLocation.coordinate.longitude)
         
         
         // Convert location into object with human readable address components
@@ -101,7 +139,7 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
             // Check for errors
             if error != nil {
                 
-                print(error ?? "Unknown Error")
+              //  print(error ?? "Unknown Error")
                 
             } else {
                 
@@ -118,7 +156,7 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
                         
                     } else {
                         
-                        print("Unable to find street address")
+                      //  print("Unable to find street address")
                         
                     }
                     
@@ -134,7 +172,7 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
                         
                     } else {
                         
-                        print("Unable to find city")
+                      //  print("Unable to find city")
                         
                     }
                     
@@ -148,7 +186,7 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
                         
                     } else {
                         
-                        print("Unable to find state")
+                      //  print("Unable to find state")
                         
                     }
                     
@@ -161,7 +199,7 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
                         
                     } else {
                         
-                        print("Unable to find zip")
+                      //  print("Unable to find zip")
                         
                     }
                     
@@ -175,7 +213,7 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
                         
                     } else {
                         
-                        print("Unable to find zip")
+                     //   print("Unable to find zip")
                         
                     }
                     
@@ -194,6 +232,7 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
     
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error \(error)")
+       // print("Error \(error)")
     }
 }
+

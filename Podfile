@@ -13,6 +13,7 @@ target 'QRCodeDemo' do
 
    pod 'GoogleMaps'
    pod 'GooglePlaces'
-pod 'SwiftCharts', '~> 0.6.3'
+
+pod 'CocoaMQTT'  
 
 end
