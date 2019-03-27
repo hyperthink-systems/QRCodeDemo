@@ -23,8 +23,6 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate, GMSMapVie
         mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - 56), camera: GMSCameraPosition.camera(withLatitude: 12.914953, longitude: 77.632730, zoom: 8))
         
   
-        
-        
         mapView?.delegate = self
         mapView?.isMyLocationEnabled = true
         
