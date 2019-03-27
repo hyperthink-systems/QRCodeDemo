@@ -13,7 +13,10 @@ target 'QRCodeDemo' do
 
    pod 'GoogleMaps'
    pod 'GooglePlaces'
+   pod 'Firebase/Core'
 
-pod 'CocoaMQTT'  
+   pod 'Firebase/Messaging'
+   pod 'ReachabilitySwift'
+   pod 'CocoaMQTT'   
 
 end

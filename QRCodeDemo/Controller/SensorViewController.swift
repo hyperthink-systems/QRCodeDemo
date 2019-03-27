@@ -22,8 +22,8 @@ class SensorViewController: UIViewController,ChartViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+
         startData()
         myChartView.layer.cornerRadius = 10
         GyroChartView.layer.cornerRadius = 10

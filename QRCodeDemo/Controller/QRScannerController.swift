@@ -38,6 +38,9 @@ class QRScannerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        navigationController?.navigationBar.tintColor = UIColor.white
+        
         // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.default(for: .video)
         

@@ -14,7 +14,7 @@ import UIKit
 let defaults = UserDefaults.standard
 var link: String? = ""
 var saveData: String? = ""
-
+let lastURL = UserDefaults.standard.url(forKey: "MyApp.lastURL")
 
 var timer: Timer!
 var timer2: Timer!
@@ -37,6 +37,9 @@ var gyroZArray = [Double]()
 var magXArray = [Double]()
 var magYArray = [Double]()
 var magZArray = [Double]()
+
+
+
 
 
 extension UIColor {

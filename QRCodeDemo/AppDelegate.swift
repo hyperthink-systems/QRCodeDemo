@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CocoaMQTT
+import UserNotifications
 
 var mqttMsg: String? = ""
 var mqttt: CocoaMQTT!
@@ -19,12 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     var window: UIWindow?
+    let notificationDelegate = QRCodeNotificationDelegate()
 
-
+  
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
-        
+           registerForPushNotifications()
+
+        UIApplication.shared.statusBarStyle = .lightContent
+
         if Reachability.isConnectedToNetwork() {
             
             print("Connected to Network")
@@ -47,7 +53,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
+        let lastURL = UserDefaults.standard.url(forKey: "MyApp.lastURL")
         
+        if lastURL != nil {
+            print("Items Prints")
+            
+            UserDefaults.standard.string(forKey: "Key")
+            
+            if let rootViewController = self.window!.rootViewController as? UINavigationController {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                if let viewcontroller = storyboard.instantiateViewController(withIdentifier: "Maps") as? MapDetailsViewController {
+                    rootViewController.pushViewController(viewcontroller, animated: true)
+                }
+            }
+            
+        } else {
+            
+            if let rootViewController = self.window!.rootViewController as? UINavigationController {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                if let viewcontroller = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController {
+                    rootViewController.pushViewController(viewcontroller, animated: true)
+                }
+            }
+            
+        }
         
         
         GMSServices.provideAPIKey("AIzaSyBzZmAYOqUtO-JKW7-hbQNC3pvUOvLxmtw")
@@ -76,6 +107,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
         return true
     }
+    
+  
+    
+    
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -196,3 +232,53 @@ extension AppDelegate {
         print("[TRACE] [\(prettyName)]: \(message)")
     }
 }
+
+
+
+extension AppDelegate{
+    
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            // 1. Check if permission granted
+            guard granted else { return }
+            // 2. Attempt registration for remote notifications on the main thread
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    
+    //MARK: Delegate methods for notifications
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        print("APNs device token: \(deviceTokenString)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("APNs registration failed: \(error)")
+    }
+    
+    
+    //MARK: Notification Configuration
+    
+    func configureNotification() {
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+            center.delegate = notificationDelegate
+            let openAction = UNNotificationAction(identifier: "OpenNotification", title: NSLocalizedString("Abrir", comment: ""), options: UNNotificationActionOptions.foreground)
+            let deafultCategory = UNNotificationCategory(identifier: "CustomSamplePush", actions: [openAction], intentIdentifiers: [], options: [])
+            center.setNotificationCategories(Set([deafultCategory]))
+        } else {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+        }
+        UIApplication.shared.registerForRemoteNotifications()
+    }
+    
+}
+

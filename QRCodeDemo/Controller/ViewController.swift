@@ -29,11 +29,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
         
         UINavigationBar.appearance().barTintColor   = UIColor(41, 150, 204,1)
         UINavigationBar.appearance().isTranslucent = false
-      
+        self.navigationItem.setHidesBackButton(true, animated:true);
 
     }
-    
-
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
@@ -46,7 +44,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
     @IBAction func ButtonTapped(_ sender: Any) {
         
         
-        let lastURL = UserDefaults.standard.url(forKey: "MyApp.lastURL")
         
         if lastURL != nil {
             print("Items Prints")

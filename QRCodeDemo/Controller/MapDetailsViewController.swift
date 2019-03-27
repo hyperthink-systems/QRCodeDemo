@@ -74,47 +74,18 @@ class MapDetailsViewController: UIViewController, CLLocationManagerDelegate, GMS
     }
     
    
-    //Mark: MQTT Service
-    
-  /*  func setUpMQTT() {
-        
-        
-        let clientID = "CocoaMQTT-" + String(ProcessInfo().processIdentifier)
-        mqtt = CocoaMQTT(clientID: clientID, host: "iot.hyperthings.in", port: 6024)
-        mqtt.username = "htsuser"
-        mqtt.password = "hts@123"
-        mqtt.willMessage = CocoaMQTTWill(topic: "/will", message: "dieout")
-        mqtt.backgroundOnSocket = true
-       // mqtt.publish("/led", withString: "Hello world")
-        mqtt.keepAlive = 60
-        mqtt.delegate = self
-        mqtt.allowUntrustCACertificate = true
-        //mqtt.enableSSL = true
-        
-        let connected = mqtt.connect()
-        print("Connected \(connected)")
-        
-    }  */
-    
-    
-    
-    
-    
     
     
     @IBAction func barButtonClicked(_ sender: Any) {
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let popupVC = storyboard.instantiateViewController(withIdentifier: "notification") as! NotificationsViewController
-        popupVC.modalPresentationStyle = .popover
-        popupVC.modalTransitionStyle = .crossDissolve
-        present(popupVC, animated: true, completion: nil)
         
-        
+        UserDefaults.standard.setValue(nil, forKey: "MyApp.lastURL")
+     
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ViewController") as? ViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+ 
     }
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
+ 
     
     @IBAction func gotoNext(_ sender: Any) {
         
