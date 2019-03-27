@@ -25,6 +25,5 @@ class NotificationsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
 
     }
-    
 
 }

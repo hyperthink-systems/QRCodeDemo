@@ -11,28 +11,6 @@ import UIKit
 import AVFoundation
 import AudioToolbox
 
-
-let defaults = UserDefaults.standard
-var link: String? = ""
-var saveData: String? = ""
-
-
-struct Lol: Codable {
-    let device, siteName, deviceName, solution: String
-    let deviceID, deviceType: String
-    let latitude, longitude: Int
-    let gateway, gatewayID: String
-    
-    enum CodingKeys: String, CodingKey {
-        case device, siteName, deviceName, solution
-        case deviceID = "deviceId"
-        case deviceType, latitude, longitude, gateway
-        case gatewayID = "gatewayId"
-    }
-}
-
-
-
 class QRScannerController: UIViewController {
     
     @IBOutlet var topbar: UIView!
@@ -185,10 +163,14 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                     saveData = metadataObj.stringValue
                     print(saveData!)
                     
-                    UserDefaults.standard.set(URL.self, forKey: "Link")
-                    UserDefaults.standard.set(saveData!, forKey: "login")
+                 //   UserDefaults.standard.set(URL.self, forKey: "Link")
+                   // UserDefaults.standard.set(saveData!, forKey: "login")
                     
                     //saveData.synchronize()
+                    
+                    let url = saveData
+                        UserDefaults.standard.set(url, forKey: "MyApp.lastURL")
+                    
                 }
                 
             }

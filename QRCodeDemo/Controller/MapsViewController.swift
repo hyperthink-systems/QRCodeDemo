@@ -1,33 +1,38 @@
 //
-//  ViewController.swift
-//  QRCodeDemo
+//  MapsViewController.swift
+//  QRCode
 //
-//  Created by HyperThink Systems on 01/02/19.
-//  Copyright © 2019 HyperThink Systems. All rights reserved.
+//  Created by HyperThink Systems on 08/03/19.
 //
 
 import UIKit
-import QRCode
-import AVFoundation
-import QRCodeReader
-import CoreLocation
+import GoogleMaps
 
 
-class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, CLLocationManagerDelegate{
+class MapsViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate{
 
-
-    @IBOutlet weak var viewPreview: UIView!
-    @IBOutlet weak var lblString: UILabel!
-    @IBOutlet weak var btnStartStop: UIButton!
     
-    var placemark : CLPlacemark?
-    var locationManager:CLLocationManager!
-
-    var data = true
+    @IBOutlet weak var newView: UIView!
     
+    var mapView: GMSMapView?
+    var locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - 56), camera: GMSCameraPosition.camera(withLatitude: 12.914953, longitude: 77.632730, zoom: 8))
+        
+  
+        
+        
+        mapView?.delegate = self
+        mapView?.isMyLocationEnabled = true
+        
+        mapView?.settings.compassButton = true
+        mapView?.settings.myLocationButton = true
+        mapView?.isBuildingsEnabled = true
+        mapView?.isTrafficEnabled = true
+        
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -35,25 +40,34 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
         locationManager.requestAlwaysAuthorization()
         
         
-        locationManager!.allowsBackgroundLocationUpdates = true
+        locationManager.allowsBackgroundLocationUpdates = true
         
-        locationManager!.pausesLocationUpdatesAutomatically = false
+        locationManager.pausesLocationUpdatesAutomatically = false
         
-
         
         if CLLocationManager.locationServicesEnabled(){
             locationManager.startUpdatingLocation()
         }
-
-       // UINavigationBar.appearance().barTintColor   = UIColor(108,55,255,1)
-        UINavigationBar.appearance().barTintColor   = UIColor(41, 150, 204,1)
-        UINavigationBar.appearance().isTranslucent = false
-        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        
+        
+        
+        print(mapView!)
+        
+        self.newView.addSubview(mapView!)
 
     }
     
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let userLocation :CLLocation = locations[0] as CLLocation
+        
+         //let userLocation = locations[0] as CLLocation
+        
+          print(userLocation.coordinate.latitude)
+          print(userLocation.coordinate.longitude)
+        
         
         // Convert location into object with human readable address components
         CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
@@ -65,7 +79,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                 
             } else {
                 
-
+                
                 if let placemark = placemarks?[0] {
                     
                     var streetAddress = ""
@@ -74,9 +88,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                         
                         streetAddress = placemark.subThoroughfare! + " " + placemark.thoroughfare!
                         
+                        print(streetAddress)
+                        
                     } else {
                         
-                      //  print("Unable to find street address")
+                        print("Unable to find street address")
                         
                     }
                     
@@ -87,10 +103,11 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                     if placemark.locality != nil  {
                         
                         city = placemark.locality!
+                        print(city)
                         
                     } else {
                         
-                      //  print("Unable to find city")
+                        print("Unable to find city")
                         
                     }
                     
@@ -101,10 +118,10 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                     if placemark.administrativeArea != nil  {
                         
                         state = placemark.administrativeArea!
-                        
+                        print(state)
                     } else {
                         
-                      //  print("Unable to find state")
+                        print("Unable to find state")
                         
                     }
                     
@@ -114,69 +131,42 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, 
                     if placemark.postalCode != nil {
                         
                         zip = placemark.postalCode!
-                        
+                        print(zip)
                     } else {
                         
-                       // print("Unable to find zip")
+                        print("Unable to find zip")
                         
                     }
                     
-                    var country:String = ""
+                    var country = ""
                     
                     if placemark.country != nil {
                         
                         country = placemark.country!
-                        
+                        print(country)
                     } else {
                         
-                      //  print("Unable to find zip")
+                        print("Unable to find zip")
                         
                     }
                     
                     
-                  //  print("\(streetAddress)\n\(city), \(state) \(zip)")
+                    //  print("\(streetAddress)\n\(city), \(state) \(zip)")
                     
                     DispatchQueue.main.async {
                     }
-                   
+                    
                 }
                 
             }
         }
     }
-
+    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
-    
-    @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
-        
-     
-}
-    @IBAction func ButtonTapped(_ sender: Any) {
-        
-        if link == saveData {
-            print("Items Prints")
-            
-            UserDefaults.standard.string(forKey: "Key")
-            
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Maps") as? MapDetailsViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
-            
-        } else {
-            
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Scan") as? QRScannerController
-            self.navigationController?.pushViewController(vc!, animated: true)
-            
-        }
-        
-    }
-    
-}
-extension UIColor {
-    convenience init(_ r: Double,_ g: Double,_ b: Double,_ a: Double) {
-        self.init(red: CGFloat(r/255), green: CGFloat(g/255), blue: CGFloat(b/255), alpha: CGFloat(a))
-    }
-}
 
+    
+
+}

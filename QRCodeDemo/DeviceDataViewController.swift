@@ -36,11 +36,6 @@ class DeviceDataViewController: UIViewController {
     
     var motion = CMMotionManager()
     
-    
-    
-    
-    
-    
     var timer: Timer!
     
     override func viewDidLoad() {

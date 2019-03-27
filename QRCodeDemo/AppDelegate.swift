@@ -24,6 +24,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        
+        if Reachability.isConnectedToNetwork() {
+            
+            print("Connected to Network")
+            
+        } else {
+            
+            let alertController = UIAlertController (title: "Attention!!", message: "You are offline Please turn on internet.", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+            
+            alertWindow.rootViewController = UIViewController()
+            alertWindow.windowLevel = UIWindow.Level.alert + 1
+            alertWindow.makeKeyAndVisible()
+            
+            alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
+
+            
+        }
+        
+        
+        
+        
         GMSServices.provideAPIKey("AIzaSyBzZmAYOqUtO-JKW7-hbQNC3pvUOvLxmtw")
         //GMSPlacesClient.provideAPIKey("AIzaSyBzZmAYOqUtO-JKW7-hbQNC3pvUOvLxmtw")
    
